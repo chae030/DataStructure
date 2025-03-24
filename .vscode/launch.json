@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/parkchaeyeon/Desktop/GitHub/Data Structure",
-      "program": "/Users/parkchaeyeon/Desktop/GitHub/Data Structure/build/Debug/outDebug"
+      "cwd": "/Users/parkchaeyeon/Desktop/GitHub/Data Structure/ch03",
+      "program": "/Users/parkchaeyeon/Desktop/GitHub/Data Structure/ch03/build/Debug/outDebug"
     }
   ]
 }

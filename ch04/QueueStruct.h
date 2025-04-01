@@ -32,7 +32,7 @@ void enqueue(Queue *q, Element val)
     if (is_full(q))
         error("Overflow Error!");
     q->rear = (q->rear + 1) % MAX_SIZE;
-    q->data[q->rear] = e;
+    q->data[q->rear] = val;
 }
 Element dequeue(Queue *q)
 {

@@ -22,7 +22,7 @@ void push_path(Deque *path, Element loc)
     while(!is_empty(path))
     {
         Element prev = get_rear(path);
-        if ((prev.c == loc.c && abs(prev.r - loc.r) == 1) || (prev.c == loc.r && abs(prev.c - loc.c) == 1))
+        if ((prev.c == loc.c && abs(prev.r - loc.r) == 1) || (prev.r == loc.r && abs(prev.c - loc.c) == 1))
         {
             add_rear(path, loc);
             return;
@@ -84,9 +84,9 @@ int main (void)
 
     while(is_empty(&control) == 0)
     {
-        system("cls");
+        system("clear");
         print_maze(&control);
-        sleep(500);
+        usleep(500000);
 
         Element here = pop_loc(&control);
         int c = here.c;

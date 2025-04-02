@@ -86,7 +86,7 @@ int main (void)
     {
         system("clear");
         print_maze(&control);
-        usleep(500000);
+        usleep(50000);
 
         Element here = pop_loc(&control);
         int c = here.c;

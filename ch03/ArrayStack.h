@@ -8,16 +8,17 @@ void error(char str[])
     exit(1);
 }
 
-
 void init_stack(void)
 {
     top = -1;
 }
+
 int is_empty(void)
 {
     if (top == -1) return 1;
     else return 0;
 }
+
 int is_full(void)
 {
     return (top==(MAX_SIZE - 1));

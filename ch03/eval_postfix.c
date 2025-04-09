@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #define MAX_SIZE 100
 typedef double Element;
 #include "ArrayStack.h"

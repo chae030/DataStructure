@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void hanoi_tower (int n, char from, char tmp, char to)
+{
+    if(n == 1)
+    {
+        printf("원판 %d : %c --> %c", n, from, to);
+    }
+    else
+    {
+    // n-1개 원판 보조 기둥으로 옮긴다
+        hanoi_tower(n - 1, from, to, tmp);
+
+    // 가장 큰 원판 목표 기둥으로 옮긴다
+        pritf("원판 %d : %c --> %c", n, from, to);
+
+    // 보조기둥에 있던 n-1개를 목표기둥으로 옮긴다
+        hanoi_tower(n - 1, tmp, from, to);
+    }
+}
+
+int main (void)
+{
+    int x;
+    printf("원판의 수 입력 : ");
+    scanf("%d", &x);
+    hanoi_tower(x, 'A', 'B', 'C');
+    return 0;
+}

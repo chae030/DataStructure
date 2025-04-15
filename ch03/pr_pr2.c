@@ -3,24 +3,24 @@
 #include <string.h>
 
 #define MAX_SIZE 100
-typedef int Element;
+typedef double Element;
 #include "ArrayStack.h"
 
 double eval_postfix(char * str) // 후위 계산 : 2 3 + 4 * 9 +
 {
     int i = 0;
-    while (str[i] == '\0')
+    while (str[i] != '\0')
     {
         char c = str[i++];
         if (c >= '0' && c <= '9')
         {
             double num = (double)c - '0';
-            push(c);
+            push(num);
         }
         else if (c == '+' || c == '-' || c == '*' || c == '/')
         {
-            char num2 = pop();
-            char num1 = pop();
+            double num2 = pop();
+            double num1 = pop();
             switch (c)
             {
                 case '+': push(num1+num2); break;
@@ -50,16 +50,19 @@ int precedence(char c) // 우선순위 계산
     return -1;
 }
 
-char* infix_to_postfix(char* str) // 중위 -> 후위 변환
+char* infix_to_postfix(char str[]) // 중위 -> 후위 변환
 {
+    init_stack();
     int i = 0;
-    char result[MAX_SIZE];
+    int j = 0;
+    char* result = (char*)malloc(sizeof(char) * MAX_SIZE);
     while (str[i] != '\0')
     {
         char c = str[i++];
         if (c >= '0' && c <= '9')
         {
-            result[i] = c;
+            result[j++] = c;
+            result[j++] = ' ';
         }
         else if (c == '(')
         {
@@ -71,7 +74,10 @@ char* infix_to_postfix(char* str) // 중위 -> 후위 변환
             {
                 char p = pop();
                 if (p == '(') break;
-                else result[i] = p;
+                else {
+                    result[j++] = p;
+                    result[j++] = ' ';
+                }
             }
         }
         else if (c == '+' || c == '-' || c == '*' || c == '/')
@@ -79,9 +85,10 @@ char* infix_to_postfix(char* str) // 중위 -> 후위 변환
             while(is_empty() == 0)
             {
                 char p = peek();
-                if (precedence(p) > precedence(c))
+                if (precedence(p) >= precedence(c))
                 {
-                    result[i] = p;
+                    result[j++] = p;
+                    result[j++] = ' ';
                     pop();
                 }
                 else break;
@@ -89,15 +96,18 @@ char* infix_to_postfix(char* str) // 중위 -> 후위 변환
             push(c);
         }
     }
-    while (is_empty == 0)
+    while (is_empty() == 0)
     {
-        result[i++] = pop();
+        result[j++] = pop();
+        result[j++] = ' ';
     }
-    result[i] = '\0';
-    for (int j = 0; j < strlen(result); j++)
+    result[j] = '\0';
+    int k = 0;
+    while (result[k]!= '\0')
     {
-        printf("%c", result[j]);
+        printf("%c", result[k++]);
     }
+    printf("\n");
     return result;
 }
 

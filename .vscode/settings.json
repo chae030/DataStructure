@@ -57,6 +57,7 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "circularqueue.h": "c"
+    "circularqueue.h": "c",
+    "pr_pr2.h": "c"
   }
 }

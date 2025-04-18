@@ -3,6 +3,7 @@ typedef struct Node {
     Element data;	
     struct Node* link;
 } Node;
+
 Node* front = NULL;	
 Node* rear = NULL;	
 

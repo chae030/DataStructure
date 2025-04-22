@@ -11,7 +11,7 @@ typedef struct Waiting Element;
 
 void reserve (int nperson, const char info[]) // const 변경 불가
 {
-    static int id = 0; // static 함수 호출 시에 값 유지
+    static int id = 0; // static 함수 호출 시에 값 유지 (함수가 게속 호출돼도 이 변수는 처음 한 번만 초기화됨)
     Element e;
     e.id = ++id;
     e.nperson = nperson;

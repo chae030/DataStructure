@@ -27,6 +27,7 @@ void preorder(TNode* n)
 		preorder(n->right);
 		printf(")");
 	}
+    else printf(". ");
 }
 
 TNode* search_BST(TNode* root, int key)
